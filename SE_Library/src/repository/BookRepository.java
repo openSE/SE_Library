@@ -2,13 +2,12 @@ package repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dto.Book;
 
@@ -73,5 +72,44 @@ public class BookRepository {
 		}
 		
 		return result;
+	}
+	
+	public List<Book> getBookList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> bookList = new ArrayList();
+		
+		try {
+			conn = dbConnection.getConnection();
+			
+			String sql = "select * from book";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+	
+			while (rs.next()) {
+				int bookId = rs.getInt("b_id");
+				String bookName = rs.getString("b_name");
+				String bookAuthor = rs.getString("b_author");
+				String bookPublisher = rs.getString("b_publisher");
+				String bookPublishYear = rs.getString("b_publishYear");
+				Book book = new Book(bookId, bookName, bookAuthor, bookPublisher, bookPublishYear);
+				bookList.add(book);
+			}
+		} catch (Exception e) {
+			LOGGER.error("book list load fail");
+			LOGGER.error("Exception: " + e.getMessage());
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				LOGGER.error("close 실패");
+				LOGGER.error("Exception: " + e.getMessage());
+			}
+		}
+		return bookList;
 	}
 }
