@@ -6,6 +6,7 @@
 	books = (ArrayList<Book>)request.getAttribute("bookList");
 	
 	if (books == null) {
+		System.out.println("redirect");
 		response.sendRedirect("book");
 	}
 %>
@@ -31,18 +32,20 @@
 				<th>출판연도</th>
 			</tr>
 			<%
-				int size = books.size();
-				for (int i = 0; i < size; i++) { 
-					Book book = books.get(i);
-				%>
-					<tr>
-						<td><%= "" + book.getBookId() %></td>
-						<td><%= "" + book.getBookName() %></td>
-						<td><%= "" + book.getBookAuthor() %></td>
-						<td><%= "" + book.getBookPublisher() %></td>
-						<td><%= "" + book.getBookPublishYear() %></td>
-					</tr>
-				<%}
+				if (books != null) {
+					int size = books.size();
+					for (int i = 0; i < size; i++) { 
+						Book book = books.get(i);
+					%>
+						<tr>
+							<td><%= "" + book.getBookId() %></td>
+							<td><%= "" + book.getBookName() %></td>
+							<td><%= "" + book.getBookAuthor() %></td>
+							<td><%= "" + book.getBookPublisher() %></td>
+							<td><%= "" + book.getBookPublishYear() %></td>
+						</tr>
+					<%}
+				}
 			%>
 		</table>
 	</div>
