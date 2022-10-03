@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dto.Book, java.util.*" %>
+<%
+	ArrayList<Book> books = null;
+	books = (ArrayList<Book>)request.getAttribute("bookList");
+	
+	if (books == null) {
+		response.sendRedirect("book");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,17 +30,20 @@
 				<th>출판사</th>
 				<th>출판연도</th>
 			</tr>
-			<%--
-				for (;;) { %>
+			<%
+				int size = books.size();
+				for (int i = 0; i < size; i++) { 
+					Book book = books.get(i);
+				%>
 					<tr>
-						<td><%=id %></td>
-						<td><%=title %></td>
-						<td><%=author %></td>
-						<td><%=publisher %></td>
-						<td><%=publishDate %></td>
+						<td><%= "" + book.getBookId() %></td>
+						<td><%= "" + book.getBookName() %></td>
+						<td><%= "" + book.getBookAuthor() %></td>
+						<td><%= "" + book.getBookPublisher() %></td>
+						<td><%= "" + book.getBookPublishYear() %></td>
 					</tr>
 				<%}
-			--%>
+			%>
 		</table>
 	</div>
 	<footer class ="container">
