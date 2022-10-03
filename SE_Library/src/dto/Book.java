@@ -1,6 +1,7 @@
 package dto;
 
 public class Book {
+	private int bookId;
 	private String bookName;
 	private String bookAuthor;
 	private String bookPublisher;
@@ -25,10 +26,36 @@ public class Book {
 		this.bookImageName = bookImageName;
 	}
 	
+	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.bookAuthor = bookAuthor;
+		this.bookPublisher = bookPublisher;
+		this.bookPublishYear = bookPublishYear;
+	}
+	
+	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear,
+			String bookImageName) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.bookAuthor = bookAuthor;
+		this.bookPublisher = bookPublisher;
+		this.bookPublishYear = bookPublishYear;
+		this.bookImageName = bookImageName;
+	}
+	
 	public Book() {
 		super();
 	}
-
+	
+	public int getBookId() {
+		return bookId;
+	}
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
 	public String getBookName() {
 		return bookName;
 	}
