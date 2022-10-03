@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<form action ="saveBook.jsp" method="post" enctype="multipart/form-data">
+		<form action ="book" method="post" enctype="multipart/form-data">
 			도서 제목: <input type="text" name="bookName"><br>
 			저자: <input type="text" name="bookAuthor"><br>
 			출판사: <input type="text" name="bookPublisher"><br>
