@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dto.Book;
 import service.BookService;
 
 @WebServlet("/book")
@@ -35,5 +38,16 @@ public class BookController extends HttpServlet {
 		LOGGER.info("[결과] add book 결과: " + result);
 		
 		resp.sendRedirect("addBook.jsp?result="+result);
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		LOGGER.info("[실행] get book list controller");
+		
+		List<Book> bookList = bookService.getBookList();
+		req.setAttribute("bookList", bookList);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("bookList.jsp");
+		rd.forward(req, resp);
 	}
 }
