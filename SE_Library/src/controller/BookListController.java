@@ -17,26 +17,26 @@ import org.slf4j.LoggerFactory;
 import dto.Book;
 import service.BookService;
 
-@WebServlet("/book")
-public class BookController extends HttpServlet {
+@WebServlet("/bookList")
+public class BookListController extends HttpServlet {
 	private final Logger LOGGER = LoggerFactory.getLogger(BookController.class.getName());
 	private BookService bookService = null;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		LOGGER.info("[실행] BookController init");
+		LOGGER.info("[실행] BookListController init");
 		bookService = new BookService();
 		super.init(config);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		LOGGER.info("[실행] add book controller");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		LOGGER.info("[실행] get book list controller");
 		
-		int result = bookService.addBook(req, resp);
+		List<Book> bookList = bookService.getBookList();
+		req.setAttribute("bookList", bookList);
 		
-		LOGGER.info("[결과] add book 결과: " + result);
-		
-		resp.sendRedirect("addBook.jsp?result="+result);
+		RequestDispatcher rd = req.getRequestDispatcher("bookList.jsp");
+		rd.forward(req, resp);
 	}
 }

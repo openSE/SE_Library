@@ -7,7 +7,7 @@
 	
 	if (books == null) {
 		System.out.println("redirect");
-		response.sendRedirect("book");
+		response.sendRedirect("bookList");
 	}
 %>
 <!DOCTYPE html>
