@@ -52,7 +52,14 @@ public class BookService {
 	}
 	
 	public List<Book> getBookList() {
+		LOGGER.info("[실행] BookService getBookList");
 		List<Book> bookList = bookRepository.getBookList();
+		return bookList;
+	}
+	
+	public List<Book> searchBookList(String search) {
+		LOGGER.info("[실행] BookService searchBookList");
+		List<Book> bookList = bookRepository.searchBookList(search);
 		return bookList;
 	}
 }
