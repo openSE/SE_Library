@@ -20,7 +20,7 @@ import service.BookService;
 
 @WebServlet(urlPatterns = {"/bookList", "/bookList/search"})
 public class BookListController extends HttpServlet {
-	private final Logger LOGGER = LoggerFactory.getLogger(BookController.class.getName());
+	private final Logger LOGGER = LoggerFactory.getLogger(BookSaveController.class.getName());
 	private BookService bookService = null;
 	
 	@Override

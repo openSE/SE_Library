@@ -156,4 +156,47 @@ public class BookRepository {
 		}
 		return bookList;
 	}
+	
+	public Book getBook(int id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Book book = new Book();
+		
+		try {
+			conn = dbConnection.getConnection();
+	
+			String sql = "select * from book where b_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+
+			rs.next();
+			int bookId = rs.getInt("b_id");
+			String bookName = rs.getString("b_name");
+			String bookAuthor = rs.getString("b_author");
+			String bookPublisher = rs.getString("b_publisher");
+			String bookPublishYear = rs.getString("b_publishYear");
+			String bookDescription = rs.getString("b_description");
+			String bookImageName = rs.getString("b_imageName");
+			
+			book = new Book(bookId, bookName, bookAuthor, bookPublisher, bookPublishYear, bookDescription, bookImageName);
+			
+			LOGGER.info("Book info load 완료 / " + book);
+		} catch (Exception e) {
+			LOGGER.error("book info get fail");
+			LOGGER.error("Exception: " + e.getMessage());
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				LOGGER.error("close 실패");
+				LOGGER.error("Exception: " + e.getMessage());
+			}
+		}
+		return book;
+	}
 }
