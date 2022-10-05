@@ -33,25 +33,28 @@ public class BookRepository {
 			String bookAuthor = book.getBookAuthor();
 			String bookPublisher = book.getBookPublisher();
 			String bookPublishYear = book.getBookPublishYear();
+			String bookDescription = book.getBookDescription();
 			String bookImageName = book.getBookImageName();
 			
 			if (bookImageName != null) {
 			
-				String sql = "insert into book (b_name, b_author, b_publisher, b_publishYear, b_imageName) values (?, ?, ?, ?, ?)";
+				String sql = "insert into book (b_name, b_author, b_publisher, b_publishYear, b_description, b_imageName) values (?, ?, ?, ?, ?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, bookName);
 				pstmt.setString(2, bookAuthor);
 				pstmt.setString(3, bookPublisher);
 				pstmt.setString(4, bookPublishYear);
-				pstmt.setString(5, bookImageName);
+				pstmt.setString(5, bookDescription);
+				pstmt.setString(6, bookImageName);
 			}
 			else {
-				String sql = "insert into book (b_name, b_author, b_publisher, b_publishYear) values (?, ?, ?, ?)";
+				String sql = "insert into book (b_name, b_author, b_publisher, b_publishYear, b_description) values (?, ?, ?, ?, ?)";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, bookName);
 				pstmt.setString(2, bookAuthor);
 				pstmt.setString(3, bookPublisher);
 				pstmt.setString(4, bookPublishYear);
+				pstmt.setString(5, bookDescription);
 			}
 			
 			result = pstmt.executeUpdate();
@@ -93,7 +96,8 @@ public class BookRepository {
 				String bookAuthor = rs.getString("b_author");
 				String bookPublisher = rs.getString("b_publisher");
 				String bookPublishYear = rs.getString("b_publishYear");
-				Book book = new Book(bookId, bookName, bookAuthor, bookPublisher, bookPublishYear);
+				String bookDescription = rs.getString("b_description");
+				Book book = new Book(bookId, bookName, bookAuthor, bookPublisher, bookPublishYear, bookDescription);
 				bookList.add(book);
 			}
 		} catch (Exception e) {
