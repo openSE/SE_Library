@@ -62,4 +62,10 @@ public class BookService {
 		List<Book> bookList = bookRepository.searchBookList(search);
 		return bookList;
 	}
+	
+	public Book getBook(String id) {
+		LOGGER.info("[실행] BookService getBook");
+		Book book = bookRepository.getBook(Integer.parseInt(id));
+		return book;
+	}
 }
