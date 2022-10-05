@@ -116,4 +116,44 @@ public class BookRepository {
 		}
 		return bookList;
 	}
+	
+	public List<Book> searchBookList(String search) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Book> bookList = new ArrayList();
+		
+		try {
+			conn = dbConnection.getConnection();
+			
+			String sql = "select * from book where b_name like '%"+ search +"%'";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+	
+			while (rs.next()) {
+				int bookId = rs.getInt("b_id");
+				String bookName = rs.getString("b_name");
+				String bookAuthor = rs.getString("b_author");
+				String bookPublisher = rs.getString("b_publisher");
+				String bookPublishYear = rs.getString("b_publishYear");
+				String bookDescription = rs.getString("b_description");
+				Book book = new Book(bookId, bookName, bookAuthor, bookPublisher, bookPublishYear, bookDescription);
+				bookList.add(book);
+			}
+		} catch (Exception e) {
+			LOGGER.error("book list search fail");
+			LOGGER.error("Exception: " + e.getMessage());
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				LOGGER.error("close 실패");
+				LOGGER.error("Exception: " + e.getMessage());
+			}
+		}
+		return bookList;
+	}
 }
