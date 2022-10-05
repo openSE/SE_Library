@@ -6,36 +6,40 @@ public class Book {
 	private String bookAuthor;
 	private String bookPublisher;
 	private String bookPublishYear;
+	private String bookDescription;
 	private String bookImageName;
 	
-	public Book(String bookName, String bookAuthor, String bookPublisher, String bookPublishYear) {
+	public Book(String bookName, String bookAuthor, String bookPublisher, String bookPublishYear, String bookDescription) {
 		super();
 		this.bookName = bookName;
 		this.bookAuthor = bookAuthor;
 		this.bookPublisher = bookPublisher;
 		this.bookPublishYear = bookPublishYear;
+		this.bookDescription = bookDescription;
 	}
 	
-	public Book(String bookName, String bookAuthor, String bookPublisher, String bookPublishYear,
+	public Book(String bookName, String bookAuthor, String bookPublisher, String bookPublishYear, String bookDescription,
 			String bookImageName) {
 		super();
 		this.bookName = bookName;
 		this.bookAuthor = bookAuthor;
 		this.bookPublisher = bookPublisher;
 		this.bookPublishYear = bookPublishYear;
+		this.bookDescription = bookDescription;
 		this.bookImageName = bookImageName;
 	}
 	
-	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear) {
+	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear, String bookDescription) {
 		super();
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.bookAuthor = bookAuthor;
 		this.bookPublisher = bookPublisher;
 		this.bookPublishYear = bookPublishYear;
+		this.bookDescription = bookDescription;
 	}
 	
-	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear,
+	public Book(int bookId, String bookName, String bookAuthor, String bookPublisher, String bookPublishYear, String bookDescription, 
 			String bookImageName) {
 		super();
 		this.bookId = bookId;
@@ -43,6 +47,7 @@ public class Book {
 		this.bookAuthor = bookAuthor;
 		this.bookPublisher = bookPublisher;
 		this.bookPublishYear = bookPublishYear;
+		this.bookDescription = bookDescription;
 		this.bookImageName = bookImageName;
 	}
 	
@@ -79,6 +84,12 @@ public class Book {
 	}
 	public void setBookPublishYear(String bookPublishYear) {
 		this.bookPublishYear = bookPublishYear;
+	}
+	public String getBookDescription() {
+		return bookDescription;
+	}
+	public void setBookDescription(String bookDescription) {
+		this.bookDescription = bookDescription;
 	}
 	public String getBookImageName() {
 		return bookImageName;
