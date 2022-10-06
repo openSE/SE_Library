@@ -39,7 +39,7 @@
 			%>
 			
 			<%-- login form --%>
-			<form class="login-Form" action="#" method="post">	
+			<form class="login-Form" action="login" method="post">	
 				<div class="form-group">
 					<label for="inputUserName" class="sr-only">User ID</label>
 					<input type="text" class="form-control" placeholder="ID" name='username' required autofocus>

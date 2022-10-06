@@ -35,7 +35,7 @@ public class UserLoginController extends HttpServlet {
 		String role = userService.login(user);
 		
 		if (role.equals("error")) {
-			resp.sendRedirect("/login.jsp?error=1");
+			resp.sendRedirect("login.jsp?error=1");
 		}
 		else {
 			HttpSession session = req.getSession();
