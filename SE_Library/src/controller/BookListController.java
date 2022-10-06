@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,9 +18,9 @@ import org.slf4j.LoggerFactory;
 import dto.Book;
 import service.BookService;
 
-@WebServlet("/bookList")
+@WebServlet(urlPatterns = {"/bookList", "/bookList/search"})
 public class BookListController extends HttpServlet {
-	private final Logger LOGGER = LoggerFactory.getLogger(BookController.class.getName());
+	private final Logger LOGGER = LoggerFactory.getLogger(BookSaveController.class.getName());
 	private BookService bookService = null;
 	
 	@Override
@@ -32,11 +33,17 @@ public class BookListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		LOGGER.info("[실행] get book list controller");
+		List<Book> bookList = new ArrayList();
 		
-		List<Book> bookList = bookService.getBookList();
+		if (req.getServletPath().equals("/bookList")) {
+			bookList = bookService.getBookList();
+		}
+		else if (req.getServletPath().contentEquals("/bookList/search")) {
+			bookList = bookService.searchBookList(req.getParameter("search"));
+		}
+		
 		req.setAttribute("bookList", bookList);
-		
-		RequestDispatcher rd = req.getRequestDispatcher("bookList.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/bookList.jsp");
 		rd.forward(req, resp);
 	}
 }

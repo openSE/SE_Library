@@ -26,6 +26,8 @@ create table if not exists book(
 
 alter table book convert to charset utf8;
 
+commit;
+
 desc book;
 
 insert into book (b_id, b_name, b_author, b_publisher, b_publishYear, b_description, b_imageName)

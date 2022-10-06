@@ -22,6 +22,10 @@
 			<h1 align="center">도서 목록</h1>
 		</div>
 	</header>
+	<form action="<%= application.getContextPath() %>/bookList/search">
+		도서 제목 검색: <input type="text" id="search" name="search" placeholder="Search" autocomplete="off">
+		<button type="submit">Search</button>        
+     </form>
 	<div class="container">
 		<table border="1">
 			<tr>
@@ -30,6 +34,7 @@
 				<th>저자</th>
 				<th>출판사</th>
 				<th>출판연도</th>
+				<th>비고</th>
 			</tr>
 			<%
 				if (books != null) {
@@ -43,6 +48,7 @@
 							<td><%= "" + book.getBookAuthor() %></td>
 							<td><%= "" + book.getBookPublisher() %></td>
 							<td><%= "" + book.getBookPublishYear() %></td>
+							<td><a href="book.jsp?id=<%= book.getBookId()%>">상세보기 &raquo;</a></td>
 						</tr>
 					<%}
 				}

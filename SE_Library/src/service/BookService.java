@@ -38,8 +38,9 @@ public class BookService {
 			String bookAuthor = multi.getParameter("bookAuthor");
 			String bookPublisher = multi.getParameter("bookPublisher");
 			String bookPublishYear = multi.getParameter("bookPublishYear");
+			String bookDescription = multi.getParameter("bookDescription");
 			String bookImageName = multi.getFilesystemName("bookImage");
-			Book book = new Book(bookName, bookAuthor, bookPublisher, bookPublishYear, bookImageName);
+			Book book = new Book(bookName, bookAuthor, bookPublisher, bookPublishYear, bookDescription, bookImageName);
 			
 			result = bookRepository.addBook(book);
 		} catch (Exception e) {
@@ -51,7 +52,20 @@ public class BookService {
 	}
 	
 	public List<Book> getBookList() {
+		LOGGER.info("[실행] BookService getBookList");
 		List<Book> bookList = bookRepository.getBookList();
 		return bookList;
+	}
+	
+	public List<Book> searchBookList(String search) {
+		LOGGER.info("[실행] BookService searchBookList");
+		List<Book> bookList = bookRepository.searchBookList(search);
+		return bookList;
+	}
+	
+	public Book getBook(String id) {
+		LOGGER.info("[실행] BookService getBook");
+		Book book = bookRepository.getBook(Integer.parseInt(id));
+		return book;
 	}
 }

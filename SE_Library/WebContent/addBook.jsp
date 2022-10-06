@@ -12,6 +12,7 @@
 			도서 제목: <input type="text" name="bookName"><br>
 			저자: <input type="text" name="bookAuthor"><br>
 			출판사: <input type="text" name="bookPublisher"><br>
+			상세 설명 <textarea cols="50" rows="10" name="bookDescription"></textarea><br>
 			출판 년도: <input type="number" name="bookPublishYear"><br>
 			표지 <input type="file" name="bookImage"><br>
 			<input type="submit" value="등록">
