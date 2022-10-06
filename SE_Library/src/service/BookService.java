@@ -19,7 +19,7 @@ public class BookService {
 	private BookRepository bookRepository = null;
 	
 	public BookService() {
-		LOGGER.info("[실행] BookController init");
+		LOGGER.info("[실행] BookService init");
 		bookRepository = new BookRepository();
 	}
 	
