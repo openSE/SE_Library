@@ -34,6 +34,7 @@
 				<th>저자</th>
 				<th>출판사</th>
 				<th>출판연도</th>
+				<th>비고</th>
 			</tr>
 			<%
 				if (books != null) {
@@ -47,6 +48,7 @@
 							<td><%= "" + book.getBookAuthor() %></td>
 							<td><%= "" + book.getBookPublisher() %></td>
 							<td><%= "" + book.getBookPublishYear() %></td>
+							<td><a href="book.jsp?id=<%= book.getBookId()%>">상세보기 &raquo;</a></td>
 						</tr>
 					<%}
 				}
