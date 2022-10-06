@@ -22,9 +22,9 @@
 			<h1 align="center">도서 목록</h1>
 		</div>
 	</header>
-	<form action="#">
+	<form action="<%= application.getContextPath() %>/bookList/search">
 		도서 제목 검색: <input type="text" id="search" name="search" placeholder="Search" autocomplete="off">
-		<button type="submit">Search</button>          
+		<button type="submit">Search</button>        
      </form>
 	<div class="container">
 		<table border="1">
