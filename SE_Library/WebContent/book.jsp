@@ -26,7 +26,7 @@ if (id == null) {
 			<header class="blog-header py-3">
 				<div class="row flex-nowrap justify-content-between align-items-center">
 					<div class="col-4 pt-1">
-						<a class="navbar-brand" href="./main.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
+						<a class="navbar-brand" href="<%= application.getContextPath() %>/home.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
 					</div>
 					<div class="col-4 text-center">
 						<a class="blog-header-logo text-dark" style="font-weight: bold; font-size:2.0rem;">SE 도서 상세 정보</a>
@@ -43,7 +43,7 @@ if (id == null) {
 	<div class="container">
 		<div class="row">
 			<div class ="col-md-4">
-				<img src="../resources/image/<%= book.getBookImageName() %>" style="width: 100%"/>
+				<img src="<%= application.getContextPath() %>/resources/image/<%= book.getBookImageName() %>" style="width: 100%"/>
 			</div>
 			<div class="col-md-8"	>
 				<h3><%= book.getBookName() %></h3>
@@ -64,6 +64,6 @@ if (id == null) {
 <%
 } else {
 	// error 페이지 전송
-	response.sendRedirect("../home.jsp");
+	response.sendRedirect(application.getContextPath() + "/home.jsp");
 }
 %>
