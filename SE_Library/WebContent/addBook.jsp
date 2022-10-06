@@ -42,7 +42,7 @@
 		<header class="blog-header py-3">
 			<div class="row flex-nowrap justify-content-between align-items-center">
 				<div class="col-4 pt-1">
-					<a class="navbar-brand" href="main.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
+					<a class="navbar-brand" href="home.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
 				</div>
 				<div class="col-4 text-center">
 					<a class="blog-header-logo text-dark" style="font-weight: bold; font-size:2.0rem;">도서 등록</a>
