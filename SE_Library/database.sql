@@ -52,3 +52,19 @@ insert into book (b_name, b_author, b_publisher, b_publishYear, b_description, b
 commit;
 
 select * from book;
+
+drop table user;
+
+create table if not exists user(
+	u_id varchar(15) NOT NULL,
+	u_password varchar(50) NOT NULL,
+	u_role varchar(15) NOT NULL,
+	primary key (u_id)
+
+);
+
+insert into user values ("admin", "1234", "manager");
+
+commit;
+
+select * from user;
