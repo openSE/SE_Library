@@ -57,7 +57,7 @@
 	<div class="container">
 		<%-- logout --%>
 		<div class="text-right">
-			<a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>
+			<a href="logout" class="btn btn-sm btn-success pull-right">logout</a>
 		</div>
 
 		<%-- form --%>

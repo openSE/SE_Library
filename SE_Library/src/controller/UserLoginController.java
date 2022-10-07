@@ -23,7 +23,7 @@ public class UserLoginController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		LOGGER.info("[실행] BookController init");
+		LOGGER.info("[실행] UserLoginController init");
 		userService = new UserService();
 		super.init(config);
 	}
