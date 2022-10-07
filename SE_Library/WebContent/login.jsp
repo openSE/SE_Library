@@ -18,7 +18,7 @@
 					<a class="blog-header-logo text-dark" style="font-weight: bold; font-size:2.0rem;">SE도서관 관리자 로그인</a>
 				</div>
 				<div class="col-4">
-					<a class="blog-header-logo text-dark" href="./main.jsp" style="font-weight: bold; font-size:2.0rem;"></a>
+					<a class="blog-header-logo text-dark" href="./home.jsp" style="font-weight: bold; font-size:2.0rem;"></a>
 				</div>
 			</div>
 		</header>
@@ -58,6 +58,6 @@
 	<%-- footer --%>
 	<footer class ="container">
 		<p>&copy; KGU SE lab</p>
-	</footer>	
+	</footer>
 </body>
 </html>	

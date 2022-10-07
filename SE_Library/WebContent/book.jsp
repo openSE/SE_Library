@@ -4,12 +4,12 @@
 String id = request.getParameter("id");
 Book book = null;
 book = (Book)request.getAttribute("book");
+String path = application.getContextPath();
 
 if (id == null) {
-	response.sendRedirect("home.jsp");
-	// 에러 페이지 이동 수정
+	response.sendRedirect(path + "/error.jsp");
 } else if (book == null){
-	response.sendRedirect("book/info?id=" + id);
+	response.sendRedirect(path + "/book/info?id=" + id);
 } else if (book.getBookId() > 0) { %>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if (id == null) {
 			<header class="blog-header py-3">
 				<div class="row flex-nowrap justify-content-between align-items-center">
 					<div class="col-4 pt-1">
-						<a class="navbar-brand" href="<%= application.getContextPath() %>/home.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
+						<a class="navbar-brand" href="<%= path %>/home.jsp"><i class="fa fa-home" style="color:black" aria-hidden="true"></i></a>
 					</div>
 					<div class="col-4 text-center">
 						<a class="blog-header-logo text-dark" style="font-weight: bold; font-size:2.0rem;">SE 도서 상세 정보</a>
@@ -43,7 +43,7 @@ if (id == null) {
 	<div class="container">
 		<div class="row">
 			<div class ="col-md-4">
-				<img src="<%= application.getContextPath() %>/resources/image/<%= book.getBookImageName() %>" style="width: 100%"/>
+				<img src="<%= path %>/resources/image/<%= book.getBookImageName() %>" onerror="this.src='<%= path %>/resources/image/altImage.png'" style="width: 100%"/>
 			</div>
 			<div class="col-md-8"	>
 				<h3><%= book.getBookName() %></h3>
@@ -64,6 +64,6 @@ if (id == null) {
 <%
 } else {
 	// error 페이지 전송
-	response.sendRedirect(application.getContextPath() + "/home.jsp");
+	response.sendRedirect(path + "/home.jsp");
 }
 %>

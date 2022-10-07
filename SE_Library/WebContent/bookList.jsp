@@ -6,7 +6,6 @@
 	books = (ArrayList<Book>)request.getAttribute("bookList");
 	
 	if (books == null) {
-		System.out.println("redirect");
 		response.sendRedirect("bookList");
 	}
 %>

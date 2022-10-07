@@ -13,7 +13,7 @@
 	String role = (String)session.getAttribute("role");
 	
 	if (id == null || role == null) {
-		response.sendRedirect("home.jsp");
+		response.sendRedirect("error.jsp");
 	}
 	%>
 
@@ -105,6 +105,11 @@
 				</div>
 			</div>
 		</form>
+
+		<%-- footer --%>
+		<footer>
+			<p>&copy; KGU SE lab</p>
+		</footer>
 	</div>
 </body>
 </html>
