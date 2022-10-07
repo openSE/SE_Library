@@ -13,7 +13,7 @@
 	String role = (String)session.getAttribute("role");
 	
 	if (id == null || role == null) {
-		response.sendRedirect("home.jsp");
+		response.sendRedirect("error.jsp");
 	}
 	%>
 
@@ -57,7 +57,7 @@
 	<div class="container">
 		<%-- logout --%>
 		<div class="text-right">
-			<a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>
+			<a href="logout" class="btn btn-sm btn-success pull-right">logout</a>
 		</div>
 
 		<%-- form --%>
@@ -105,6 +105,11 @@
 				</div>
 			</div>
 		</form>
+
+		<%-- footer --%>
+		<footer>
+			<p>&copy; KGU SE lab</p>
+		</footer>
 	</div>
 </body>
 </html>
